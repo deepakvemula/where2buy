@@ -19,7 +19,7 @@ const { activePage } = Astro.props;
   </nav>
   <div
     id="mobile-links"
-    class="font-light animated h-0 m-0 opacity-0 top-0 w-full"
+    class="font-light animated opacity-0 top-0 w-full h-0"
   >
     <span class="close-menu">❌</span>
     <NavLinks
@@ -30,19 +30,29 @@ const { activePage } = Astro.props;
   </div>
 </header>
 <script is:inline>
-  document.querySelector("#hamburger-menu").addEventListener("click", () => {
-    console.log("clicked...");
-    document.querySelector("#mobile-links").classList.remove("slideOutUp");
-    document.querySelector("#mobile-links").classList.add("expanded");
-    document.querySelector("#mobile-links").classList.add("slideInDown");
-  });
+  const mobileLinks = document.querySelector("#mobile-links");
+  const hamburgerMenu = document.querySelector("#hamburger-menu");
+  const closeMenuButton = document.querySelector(".close-menu");
 
-  document.querySelector(".close-menu").addEventListener("click", () => {
-    console.log("clicked...");
-    document.querySelector("#mobile-links").classList.add("slideOutUp");
-    document.querySelector("#mobile-links").classList.add("expanded");
-    document.querySelector("#mobile-links").classList.remove("slideInDown");
-  });
+  const openMenu = () => {
+    mobileLinks.classList.remove("slideOutUp", "h-0");
+    mobileLinks.classList.add("expanded", "slideInDown");
+    mobileLinks.addEventListener('animationend', () => {
+      mobileLinks.classList.remove("slideInDown");
+    }, { once: true });
+  };
+
+  const closeMenu = () => {
+    mobileLinks.classList.add("slideOutUp");
+    mobileLinks.classList.remove("slideInDown");
+    mobileLinks.addEventListener('animationend', () => {
+      mobileLinks.classList.remove("expanded", "slideOutUp");
+      mobileLinks.classList.add("h-0");
+    }, { once: true });
+  };
+
+  hamburgerMenu.addEventListener("click", openMenu);
+  closeMenuButton.addEventListener("click", closeMenu);
 </script>
 
 <style>
@@ -61,7 +71,7 @@ const { activePage } = Astro.props;
       padding: 1rem 2rem;
       width: 100vw;
       top: 0;
-      min-height: fit-content;
+      height: 100vh;
       border-bottom-left-radius: 0.5rem;
       border-bottom-right-radius: 0.5rem;
     }
