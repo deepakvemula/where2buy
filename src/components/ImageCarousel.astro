@@ -80,12 +80,12 @@ const uid = Math.random().toString(36).slice(2);
         aria-modal="true"
         aria-label="Image viewer"
       >
-        <div class="relative max-w-6xl w-full">
+        <div class="relative inline-block align-middle">
           <img
             id={`modal-img-${uid}`}
             src={images[0]}
             alt="Full-size image"
-            class="max-h-[80vh] w-full object-contain rounded-lg"
+            class="max-h-[80vh] max-w-[calc(100vw-2rem)] object-contain rounded-lg"
           />
           <button
             class="absolute top-2 right-2 size-9 rounded-full bg-white/90 text-gray-900 border border-gray-200 shadow-sm hover:bg-white dark:bg-gray-900/80 dark:text-white dark:border-gray-700 z-10 flex items-center justify-center"
