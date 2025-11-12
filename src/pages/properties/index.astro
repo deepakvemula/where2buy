@@ -1,0 +1,35 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import ListingsGrid from "../../components/ListingsGrid.astro";
+import { fetchListings } from "../../utils/listings";
+import siteConfig from "../../site.config";
+import { withBase } from "../../utils/helpers";
+
+const allListings = await fetchListings();
+const canonical = new URL(withBase("/listings"), Astro.site).toString();
+---
+
+<MainLayout
+  activePage="listings"
+  pageTitle={`All Properties | ${siteConfig.title}`}
+  description="Browse all available properties in Hyderabad"
+  canonicalUrl={canonical}
+>
+  <div class="page-content">
+    <div class="max-w-7xl mx-auto px-4 py-6 sm:py-8">
+      <h1
+        class="sigmar-ff text-balance text-center mb-3 sm:mb-4 text-gray-900 dark:text-white"
+      >
+        All Properties
+      </h1>
+      <p
+        class="text-center text-gray-600 dark:text-gray-300 mb-8 sm:mb-12 text-sm sm:text-base"
+      >
+        Discover {allListings.length}
+        {allListings.length === 1 ? "property" : "properties"} in Hyderabad
+      </p>
+
+      <ListingsGrid listings={allListings} title="" />
+    </div>
+  </div>
+</MainLayout>

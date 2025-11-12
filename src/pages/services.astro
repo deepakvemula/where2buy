@@ -2,6 +2,7 @@
 import MainLayout from "../layouts/MainLayout.astro";
 import siteConfig from "../site.config";
 import Button from "../components/Button.astro";
+import { withBase } from "../utils/helpers";
 import { BarChart3, Target, Sparkles, ArrowRight } from "lucide-astro";
 
 const services = [
@@ -219,7 +220,7 @@ const services = [
           </div>
 
           <div class="text-center mt-8">
-            <Button href="/contact" class="space-btn-filled">
+            <Button href={withBase("/contact")} class="space-btn-filled">
               Schedule a Consultation <ArrowRight class="w-5 h-5 fill-current ml-2 inline-block" />
             </Button>
             <p

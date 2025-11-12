@@ -11,11 +11,13 @@ type LayoutProps = {
   pageTitle: string;
   activePage: string;
   showSubscribeForm?: boolean;
+  canonicalUrl?: string;
 };
 const {
   pageTitle,
   activePage,
   showSubscribeForm = true,
+  canonicalUrl,
 } = Astro.props as LayoutProps;
 ---
 
@@ -39,6 +41,7 @@ const {
       title={siteConfig.title + " - RSS Feed"}
       href={new URL(withBase("/rss.xml"), Astro.site)}
     />
+    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
     <title>{pageTitle}</title>
   </head>
   <body>

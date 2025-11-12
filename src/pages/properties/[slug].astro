@@ -53,11 +53,14 @@ const statusStyles: Record<string, string> = {
 const badgeClass =
   statusStyles[normalizedStatus] ||
   "border-gray-400 text-white bg-gray-600 dark:text-gray-900 dark:bg-gray-300 dark:border-gray-400";
+
+const canonical = new URL(withBase(`/listings/${listing.Page_Slug}`), Astro.site).toString();
 ---
 
 <MainLayout
   pageTitle={listing.Meta_Title}
   description={listing.Meta_Description}
+  canonicalUrl={canonical}
 >
   <div class="page-content">
     <article class="max-w-6xl mx-auto">

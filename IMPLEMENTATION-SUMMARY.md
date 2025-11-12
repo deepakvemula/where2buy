@@ -1,3 +1,14 @@
+# ✅ Update (Nov 2025): Listings now powered by PageCMS
+
+The site has been migrated to use PageCMS (Git-based) content for property listings via an Astro Content Collection (`properties`).
+
+- Content location: `src/content/properties/`
+- Schema source: `.pages.yml` (Properties collection)
+- Runtime code: `src/utils/listings.ts` now reads from the content collection, keeping the existing `Listing` interface and all pages/components unchanged.
+- A sample entry is provided at `src/content/properties/sample-property.md`.
+
+The section below documents the earlier Google Sheets approach for reference only.
+
 # ✅ Google Sheets CMS Integration - Complete!
 
 ## 🎉 What's Been Implemented
