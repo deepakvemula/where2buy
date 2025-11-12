@@ -54,7 +54,10 @@ const badgeClass =
   statusStyles[normalizedStatus] ||
   "border-gray-400 text-white bg-gray-600 dark:text-gray-900 dark:bg-gray-300 dark:border-gray-400";
 
-const canonical = new URL(withBase(`/listings/${listing.Page_Slug}`), Astro.site).toString();
+const canonical = new URL(
+  withBase(`/listings/${listing.Page_Slug}`),
+  Astro.site
+).toString();
 ---
 
 <MainLayout
@@ -360,7 +363,9 @@ const canonical = new URL(withBase(`/listings/${listing.Page_Slug}`), Astro.site
         >
           Get in touch with us for more details and site visits
         </p>
-  <a href={withBase("/contact")} class="button-link space-btn-filled">Contact Us</a>
+        <a href={withBase("/contact")} class="button-link space-btn-filled"
+          >Contact Us</a
+        >
       </section>
     </article>
   </div>

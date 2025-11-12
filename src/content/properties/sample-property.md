@@ -28,7 +28,7 @@ base_price_min_lakhs: 75
 base_price_max_lakhs: 180
 location_area: "Kondapur"
 full_address: "Plot 12, Tech Park Road, Kondapur, Hyderabad, Telangana"
-google_maps_embed_link: "<iframe src=\"https://maps.google.com/maps?q=Kondapur%20Hyderabad&t=&z=13&ie=UTF8&iwloc=&output=embed\"></iframe>"
+google_maps_embed_link: '<iframe src="https://maps.google.com/maps?q=Kondapur%20Hyderabad&t=&z=13&ie=UTF8&iwloc=&output=embed"></iframe>'
 gallery_image_urls:
   - "https://placehold.co/800x450/png?text=Gallery+1"
   - "https://placehold.co/800x450/png?text=Gallery+2"

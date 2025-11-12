@@ -41,13 +41,19 @@ function toStringVal(v: unknown): string {
 
 function arrToCsv(arr?: string[]): string {
   if (!arr || arr.length === 0) return "";
-  return arr.map((s) => s?.trim()).filter(Boolean).join(", ");
+  return arr
+    .map((s) => s?.trim())
+    .filter(Boolean)
+    .join(", ");
 }
 
 function imagesToCsv(arr?: string[]): string {
   // Keep backward-compatible comma-separated list expected by parseImageUrls
   if (!arr || arr.length === 0) return "";
-  return arr.map((s) => s?.trim()).filter(Boolean).join(", ");
+  return arr
+    .map((s) => s?.trim())
+    .filter(Boolean)
+    .join(", ");
 }
 
 function mapEntryToListing(entry: PropertyEntry): Listing {
