@@ -1,0 +1,127 @@
+media:
+  input: public
+  output: /
+content:
+  - name: posts
+    label: Posts
+    type: collection
+    path: src/content/blog
+    view:
+      fields: [ title, draft, date ]
+    fields:
+      - { name: author, label: Author, type: string }
+      - { name: pubDatetime, label: Date, type: date }
+      - { name: modDatetime, label: Date, type: date }
+      - { name: title, label: Title, type: string, required: true }
+      - { name: ogImage, label: Title, type: string }
+      - { name: slug, label: Slug, type: string }
+      - { name: featured, label: Featured, type: boolean }
+      - { name: draft, label: Draft, type: boolean }
+      - { name: tags, label: Tags, type: string, list: true }
+      - { name: description, label: Description, type: string }
+      - { name: body, label: Body, type: rich-text }
+  - name: about
+    label: About page
+    type: file
+    path: src/pages/about.md
+    fields:
+      - { name: layout, type: string, hidden: true, default: "../layouts/AboutLayout.astro" }
+      - { name: title, label: Title, type: string }
+      - { name: body, label: Body, type: rich-text, options: { input: public/assets, output: /assets } }
+  - name: properties # The machine-name for the collection
+    label: Properties # The display name in the CMS UI
+    type: collection # Defines this as a collection of multiple entries
+    path: "src/content/properties" # Folder where property files will be stored
+    view: # Defines how the collection is displayed in the list view
+      fields: [project_name, property_type, location_area]
+    fields: # The list of fields for each property
+      - name: listing_id
+        label: Listing ID
+        type: string
+      - name: page_slug
+        label: Page Slug
+        type: string
+        required: true
+      - name: meta_title
+        label: Meta Title
+        type: string
+      - name: meta_description
+        label: Meta Description
+        type: text # Use 'text' for longer descriptions
+      - name: project_name
+        label: Project Name
+        type: string
+        required: true
+      - name: property_type
+        label: Property Type
+        type: string # You could change this to 'select'
+      - name: developer_name
+        label: Developer Name
+        type: string
+      - name: rera_number
+        label: RERA Number
+        type: string
+      - name: total_area_acres
+        label: Total Area (Acres)
+        type: number
+      - name: total_units
+        label: Total Units
+        type: number
+      - name: project_status
+        label: Project Status
+        type: select # Changed from 'string' to 'select'
+        options:
+          values: # Added the options block
+            - Under Construction
+            - Ready to Move
+      - name: possession_date
+        label: Possession Date
+        type: date
+      - name: project_description
+        label: Project Description
+        type: rich-text # Provides a rich text editor
+      - name: key_highlights
+        label: Key Highlights
+        type: string
+        list: true # Allows adding a list of highlights
+      - name: unit_configurations
+        label: Unit Configurations
+        type: string
+        list: true # Allows adding a list of configurations
+      - name: min_size_sqft
+        label: Min Size (Sqft)
+        type: number
+      - name: max_size_sqft
+        label: Max Size (Sqft)
+        type: number
+      - name: price_per_sqft
+        label: Price Per Sqft
+        type: number
+      - name: base_price_min_lakhs
+        label: Base Price Min (Lakhs)
+        type: number
+      - name: base_price_max_lakhs
+        label: Base Price Max (Lakhs)
+        type: number
+      - name: location_area
+        label: Location Area
+        type: string
+      - name: full_address
+        label: Full Address
+        type: text
+      - name: google_maps_embed_link
+        label: Google Maps Embed Link
+        type: text # 'text' field is suitable for the HTML embed code
+      - name: gallery_image_urls
+        label: Gallery Images
+        type: image
+        options:
+          multiple: true # Allows uploading multiple gallery images
+      - name: floorplan_image_urls
+        label: Floorplan Images
+        type: image
+        options:
+          multiple: true # Allows uploading multiple floorplan images
+      - name: video_link
+        label: Video Link
+        type: string # A simple string for the URL
